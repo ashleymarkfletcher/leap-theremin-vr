@@ -44,7 +44,11 @@ function draw() {
         var circ = document.querySelector('#left');
 
         var mappedHand = mapHandToScene(hand.palmPosition)
+        var roll = radToDeg(hand.roll())
+        var pitch = 180-radToDeg(hand.pitch())
+        var yaw = 180-radToDeg(hand.yaw())
 
+        circ.setAttribute('rotation', {x: pitch, y: yaw, z: roll});
         circ.setAttribute('position', {x: mappedHand[0], y: mappedHand[1], z: mappedHand[2]});
 
         // console.log('amp: ', amp)
@@ -53,14 +57,22 @@ function draw() {
       } else {
         var rightHandX = hand.palmPosition[0]
 
-        console.log('right: ', hand.palmPosition)
+        // console.log('right: ', hand)
         var mappedHand = mapHandToScene(hand.palmPosition)
 
     // console.log('rightX: ', rightHandX)
-        var pitch = map(rightHandX, -300, 300, 0, 1800)
+        // var pitch = map(rightHandX, -300, 300, 0, 1800)
+
+        var roll = radToDeg(hand.roll())
+        var pitch = 180-radToDeg(hand.pitch())
+        var yaw = 180-radToDeg(hand.yaw())
+
+        console.log(radToDeg(hand.roll()));
 
         var circ = document.querySelector('#right');
 
+
+        circ.setAttribute('rotation', {x: pitch, y: yaw, z: roll});
         circ.setAttribute('position', {x: mappedHand[0], y: mappedHand[1], z: mappedHand[2]});
 
         // osc.freq(pitch)
@@ -78,17 +90,24 @@ function mapHandToScene(handPos) {
   return [x, y, z]
 }
 
+function radToDeg(radians) {
+  return Math.round(radians * (180 / Math.PI));
+}
+
 var sceneEl = document.querySelector('a-scene');
 var left = document.createElement('a-box');
 left.setAttribute("id", "left");
 left.setAttribute("color", "#EF2D5E");
-// el.setAttribute('radius', '5');
+left.setAttribute("width", "4");
+left.setAttribute("depth", "5");
 
 sceneEl.appendChild(left);
 
 var right = document.createElement('a-box');
 right.setAttribute("id", "right");
 right.setAttribute("color", "#EF2D5E");
+right.setAttribute("width", "4");
+right.setAttribute("depth", "5");
 // el.setAttribute('radius', '5');
 
 sceneEl.appendChild(right);
