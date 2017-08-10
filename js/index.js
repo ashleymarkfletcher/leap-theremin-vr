@@ -75,6 +75,9 @@ function draw() {
         circ.setAttribute('rotation', {x: pitch, y: yaw, z: roll});
         circ.setAttribute('position', {x: mappedHand[0], y: mappedHand[1], z: mappedHand[2]});
 
+        hand.fingers.forEach(function(finger){
+          console.log('finger', finger);
+        });
         // osc.freq(pitch)
       }
     })
