@@ -41,8 +41,23 @@ function draw() {
     //
     //     var amp = map(leftHandY, 50, 500, 0, 1)
     //
-    //     var circ = document.querySelector('#left');
-    //
+    var position = new THREE.Vector3()
+        var circ = document.querySelector('#right');
+        var theremin = document.querySelector('#theremin');
+        var pos = theremin.getAttribute('position')
+        var post = theremin.object3D.getWorldPosition();
+
+        console.log('h', circ.object3D.position);
+
+        var worldPos = new THREE.Vector3();
+        var w = worldPos.setFromMatrixPosition(theremin.object3D.matrixWorld);
+
+        var c = theremin.object3D.localToWorld(position.fromArray(frame.hands[0].palmPosition));
+
+        console.log('pos', pos, post, w, c);
+    // console.log('pos', c);
+    // console.log('pos222', frame.hands[0].palmPosition);
+    // console.log(document.querySelector('#right').object3D);
     //     var mappedHand = mapHandToScene(hand.palmPosition)
     //     var roll = radToDeg(hand.roll())
     //     var pitch = 180-radToDeg(hand.pitch())
