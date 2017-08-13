@@ -11,19 +11,21 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js'></script>
   <script src='https://aframe.io/releases/0.6.1/aframe.min.js'></script>
   <script src="https://unpkg.com/aframe-leap-hands/dist/aframe-leap-hands.min.js"></script>
-
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"></script>
 </head>
 
 <body>
 
-  <a-scene leap="vr: false" camera="near: 0.01" look-controls position="0 1.5 0">
-
+  <a-scene physics="debug: true" leap="vr: false" camera="near: 0.01" look-controls position="0 1.5 0">
+    <a-plane color="#6EBAA7" height="100" width="100" rotation="-90 0 0"></a-plane>
+    <a-sky color="#aae7e8"></a-sky>
     <!-- <a-sphere position="0 1.25 -20" radius="1.25" color="#EF2D5E"></a-sphere> -->
-    <a-collada-model id="theremin" src="/assets/model.dae" position="-0.5 1 -1" rotation="0 270 0"></a-collada-model>
+    <a-collada-model id="theremin" static-body shape="box" src="/assets/theremin/model.dae" position="-0.4 1 -1" rotation="0 270 0"></a-collada-model>
+    <a-collada-model id="tripod" static-body shape="box" src="/assets/tripod/model.dae" position="0.243 -0.333 -0.285" rotation="0 180 0"></a-collada-model>
 
-    <a-entity id="left" leap-hand="hand: left" position="0 1 -1"></a-entity>
-    <a-entity id="right" leap-hand="hand: right" position="0 1 -1"></a-entity>
-
+    <a-entity id="left" enablePhysics="true" leap-hand="hand: left" position="0 1 -1"></a-entity>
+    <a-entity id="right" enablePhysics="true" leap-hand="hand: right" position="0 1 -1"></a-entity>
+    <!-- <a-camera></a-camera> -->
   </a-scene>
 
   <script src="js/index.js"></script>
