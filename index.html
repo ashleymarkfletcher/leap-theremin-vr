@@ -16,12 +16,14 @@
 
 <body>
 
-  <a-scene physics="debug: true" leap="vr: false" camera="near: 0.01" look-controls position="0 1.5 0">
+  <a-scene leap="vr: false" camera="near: 0.01" look-controls position="0 1.5 0">
     <a-plane color="#6EBAA7" height="100" width="100" rotation="-90 0 0"></a-plane>
-    <a-sky color="#aae7e8"></a-sky>
+    <a-sky ></a-sky>
     <!-- <a-sphere position="0 1.25 -20" radius="1.25" color="#EF2D5E"></a-sphere> -->
     <a-collada-model id="theremin" static-body shape="box" src="/assets/theremin/model.dae" position="-0.4 1 -1" rotation="0 270 0"></a-collada-model>
     <a-collada-model id="tripod" static-body shape="box" src="/assets/tripod/model.dae" position="0.243 -0.333 -0.285" rotation="0 180 0"></a-collada-model>
+    <!-- <a-collada-model id="stage" static-body shape="box" src="/assets/stage/model.dae" position="0.243 -0.333 -0.285" rotation="0 180 0"></a-collada-model> -->
+
 
     <a-entity id="left" enablePhysics="true" leap-hand="hand: left" position="0 1 -1"></a-entity>
     <a-entity id="right" enablePhysics="true" leap-hand="hand: right" position="0 1 -1"></a-entity>
