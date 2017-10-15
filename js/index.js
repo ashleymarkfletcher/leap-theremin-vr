@@ -1,6 +1,6 @@
 const controller = new Leap.Controller({enableGestures: true})
 
-this.controller.on('connect', function(){
+controller.on('connect', function(){
   console.log('leap motion connected');
   // setInterval(function(){
   //   var frame = controller.frame();
